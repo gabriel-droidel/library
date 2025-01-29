@@ -6,6 +6,7 @@ function Book(title, author, pages, read) {
 	this.author = author;
 	this.pages = pages;
 	this.read = read;
+	this.index = null;
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -33,11 +34,13 @@ submitBook.addEventListener('click', (e) => {
 	const titleInput = document.querySelector('#title');
 	const authorInput = document.querySelector('#author');
 	const pagesInput = document.querySelector('#pages');
+	const readInput = document.querySelector('#read');
+
 	addBookToLibrary(
 		titleInput.value,
 		authorInput.value,
 		pagesInput.value,
-		'yes'
+		readInput.checked
 	);
 	displayBook(myLibrary);
 	dialog.close();
@@ -51,21 +54,42 @@ closeDialog.addEventListener('click', (e) => {
 function displayBook(myLibrary) {
 	// create a div with each book in the array
 	bookDisplayed.textContent = '';
-	myLibrary.forEach((item) => {
+	myLibrary.forEach((item, index) => {
+		item.index = index;
 		const bookInfoDisplay = document.createElement('div');
 		bookInfoDisplay.classList.add('book-style');
-		['title', 'author', 'pages', 'read'].forEach((element) => {
+		['title', 'author', 'pages'].forEach((element) => {
 			const p = document.createElement('p');
-			p.textContent =capitalizeWord([element].toString()) + ` : `+ item[element];
+			p.textContent =
+				capitalizeWord([element].toString()) + ` : ` + item[element];
 			bookInfoDisplay.appendChild(p);
 		});
+		const readStatus = document.createElement('input');
+		readStatus.type = 'checkbox';
+		readStatus.checked = item.read;
+		bookInfoDisplay.appendChild(readStatus);
+		const removeBookButton = document.createElement('button');
+		removeBookButton.textContent = 'Delete';
+		removeBookButton.classList.add('remove-btn');
+		removeBookButton.addEventListener('click', () =>
+			removeBook(myLibrary, item.index)
+		);
+		bookInfoDisplay.appendChild(removeBookButton);
 		bookDisplayed.appendChild(bookInfoDisplay);
 	});
-
 }
 
-function capitalizeWord(string){
+function capitalizeWord(string) {
 	const array = string.split('');
-	array[0]=array[0].toUpperCase();
+	array[0] = array[0].toUpperCase();
 	return array.join('');
 }
+
+function removeBook(array, index) {
+	array.splice(index, 1);
+	displayBook(myLibrary);
+}
+
+Book.prototype.toggleRead = function () {
+	!this.read === false ? (this.read = false) : (this.read = true);
+};
