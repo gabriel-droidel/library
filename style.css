@@ -89,7 +89,7 @@ dialog.open {
 	border-radius: 20px;
 	border: none;
 	background-color: var(--secondary-color);
-	width: 50%;
+	min-width:20%;
 }
 dialog {
 	font-family: Georgia, 'Times New Roman', Times, serif;
@@ -174,17 +174,39 @@ dialog.open #btn-close:hover {
 
 .book-list {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-	grid-template-rows: auto;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	gap: 20px;
 }
 .book-style {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 5px;
-	background-color: bisque;
-	border: 1px solid red;
+	display: grid;
+	gap:10px;
+	background-color: var(--main-color);
+	color:white;
+	border-radius: 10px;
 	padding: 20px;
+	box-shadow: black 0 1px 4px;
+}
+
+.book-style >*{
+	display: flex;
+	gap:10px;
+	
+}
+
+.book-style button{
+	padding:4px 8px;
+	text-align: end;
+	max-width: 60px;
+	justify-self: end;
+	background-color: white;
+	color:var(--main-color-darker);
+	font-weight: bold;
+	border:none;
+	border-radius: 5px;
+}
+
+.book-style button:hover{
+	cursor: pointer;
+	background-color: red;
+	color:white;
 }

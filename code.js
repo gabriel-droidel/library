@@ -125,16 +125,23 @@ function removeBook(array, index) {
 
 function displayBookContent(container, item) {
 	['title', 'author', 'pages'].forEach((element) => {
+		const rowInfo = document.createElement('div');
+		const category =document.createElement('p');
+		category.classList.add('category');
 		const p = document.createElement('p');
-		p.textContent =
-			capitalizeWord([element].toString()) + ` : ` + item[element];
-		container.appendChild(p);
+		p.classList.add('book-data');
+		category.textContent=capitalizeWord([element].toString()) + ':';
+		p.textContent =item[element];
+		rowInfo.appendChild(category);
+		rowInfo.appendChild(p);
+		container.appendChild(rowInfo);
 	});
 }
 
 function handleReadStatus(container, item) {
 	const readStatus = document.createElement('input');
 	const labelRead = document.createElement('label');
+	const readBox = document.createElement('div');
 	labelRead.htmlFor = `${item.index}`;
 	labelRead.appendChild(document.createTextNode(`Read : `));
 	readStatus.name = 'read';
@@ -142,8 +149,9 @@ function handleReadStatus(container, item) {
 	readStatus.id = `${item.index}`;
 	readStatus.addEventListener('click', () => item.toggleRead());
 	readStatus.checked = item.read;
-	container.appendChild(labelRead);
-	container.appendChild(readStatus);
+	readBox.appendChild(labelRead);
+	readBox.appendChild(readStatus);
+	container.appendChild(readBox);
 }
 
 function createRemoveButton(container, item) {
