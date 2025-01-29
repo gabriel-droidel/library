@@ -66,6 +66,8 @@ function displayBook(myLibrary) {
 		});
 		const readStatus = document.createElement('input');
 		readStatus.type = 'checkbox';
+		readStatus.id = `${item.index}`;
+		readStatus.addEventListener('click',()=>item.toggleRead());
 		readStatus.checked = item.read;
 		bookInfoDisplay.appendChild(readStatus);
 		const removeBookButton = document.createElement('button');
@@ -91,5 +93,5 @@ function removeBook(array, index) {
 }
 
 Book.prototype.toggleRead = function () {
-	!this.read === false ? (this.read = false) : (this.read = true);
+	this.read = !this.read;
 };
