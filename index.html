@@ -19,7 +19,7 @@
 			<button class="addBook">Add Book</button>
 		</header>
 		<div class="content">
-			<div class="book-shelf"></div>
+			<div class="books-container"></div>
 		</div>
 		<dialog id="dialog">
 			<p>Add your book!</p>
@@ -28,17 +28,24 @@
 				<input
 					type="text"
 					name="title"
-					id="title" />
+					id="title"
+					maxlength="60"
+					placeholder="Your sexy book title" />
 				<label for="author">Author:</label>
 				<input
 					type="text"
 					name="author"
-					id="author" />
+					id="author"
+					maxlength="60" 
+					placeholder="Your sexy author name"/>
 				<label for="pages">Pages:</label>
 				<input
 					type="number"
 					name="pages"
-					id="pages" />
+					id="pages"
+					min="1"
+					value="1"
+					max="3500" />
 				<label for="read">Read:</label>
 				<input
 					type="checkbox"

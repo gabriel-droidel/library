@@ -48,7 +48,7 @@ header {
 .content {
 	flex: 1;
 }
-.book-shelf {
+.books-container{
 	padding: 1rem;
 }
 
