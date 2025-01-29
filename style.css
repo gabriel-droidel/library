@@ -33,7 +33,15 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+/*
+Styling
+*/
 
+:root {
+	--main-color: rgb(19, 74, 192);
+	--main-color-darker: rgb(4, 40, 117);
+	--secondary-color: rgb(201, 201, 201);
+}
 body {
 	min-height: 100vh;
 	display: flex;
@@ -42,29 +50,141 @@ body {
 header {
 	height: 100px;
 	width: 100%;
-	background-color: yellowgreen;
+	background-color: var(--main-color);
+	color: white;
+	padding: 20px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: '. title button';
+	align-items: center;
+	font-family: 'Times New Roman', Times, serif;
+	box-shadow: black 0 1px 4px;
+}
+
+header h1 {
+	justify-self: center;
+	grid-area: title;
+	font-weight: bold;
+}
+
+header .addBook {
+	justify-self: end;
+	grid-area: button;
+	border-radius: 50%;
+	border: none;
+	padding: 10px 20px;
 	text-align: center;
+	font-size: 30px;
+}
+
+header .addBook:hover {
+	cursor: pointer;
+	background-color: var(--main-color-darker);
+	color: white;
+}
+dialog.open {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	border-radius: 20px;
+	border: none;
+	background-color: var(--secondary-color);
+	width: 50%;
+}
+dialog {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 16px;
+	font-weight: 400;
+}
+dialog.open p {
+	font-size: 18px;
+	font-weight: 600;
+}
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+form .text,
+form .input-pages {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	width: 100%;
+}
+form .error {
+	color: red;
+	font-size: 95%;
+	font-style: italic;
+}
+form .read-container {
+	display: flex;
+	gap: 10px;
+}
+input[type='text'],
+input[type='number'] {
+	border: none;
+	background-color: var(--main-color);
+	color: white;
+	padding: 8px 16px;
+	border-radius: 20px;
+	font-weight: bold;
+	font-size: 14px;
+}
+input[type='text']:focus,
+input[type='number']:focus {
+	outline: none;
+}
+::placeholder {
+	color: white;
+	opacity: 0.5;
+}
+dialog.open .dialog-buttons {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+dialog.open button {
+	padding: 8px 16px;
+	border-radius: 20px;
+	border: none;
+	background-color: var(--main-color);
+	color: white;
+	font-weight: bold;
+}
+
+dialog.open button:hover {
+	cursor: pointer;
+}
+
+dialog.open #submit:hover {
+	background-color: green;
+}
+
+dialog.open #btn-close:hover {
+	background-color: red;
 }
 .content {
 	flex: 1;
 }
-.books-container{
+.books-container {
 	padding: 1rem;
 }
 
 .book-list {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	grid-template-rows: auto;
-	gap:20px;
+	gap: 20px;
 }
-.book-style{
+.book-style {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap:5px;
+	gap: 5px;
 	background-color: bisque;
-	border:1px solid red;
-	padding:20px;
+	border: 1px solid red;
+	padding: 20px;
 }

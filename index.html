@@ -16,7 +16,7 @@
 	<body>
 		<header>
 			<h1>Library</h1>
-			<button class="addBook">Add Book</button>
+			<button class="addBook">+</button>
 		</header>
 		<div class="content">
 			<div class="books-container"></div>
@@ -24,43 +24,53 @@
 		<dialog id="dialog">
 			<p>Add your book!</p>
 			<form method="dialog">
-				<label for="title">Title:</label>
-				<input
-					type="text"
-					name="title"
-					id="title"
-					maxlength="60"
-					placeholder="Book title"
-					required />
-				<label for="author">Author:</label>
-				<input
-					type="text"
-					name="author"
-					id="author"
-					maxlength="60"
-					placeholder="Author name"
-					required />
-				<label for="pages">Pages:</label>
-				<div class="error"></div>
-				<input
-					type="number"
-					name="pages"
-					id="pages"
-					min="1"
-					max="3500"
-					value="3500" />
-				<label for="read">Read:</label>
-				<input
-					type="checkbox"
-					name="read"
-					id="read" />
+				<div class="text">
+					<label for="title">Title:</label>
+					<input
+						type="text"
+						name="title"
+						id="title"
+						maxlength="60"
+						placeholder="Book title"
+						required />
+				</div>
+				<div class="text">
+					<label for="author">Author:</label>
+					<input
+						type="text"
+						name="author"
+						id="author"
+						maxlength="60"
+						placeholder="Author name"
+						required />
+				</div>
+				<div class="input-pages">
+					<label for="pages">Pages:</label>
+					<div class="error"></div>
+					<input
+						type="number"
+						name="pages"
+						id="pages"
+						min="1"
+						max="3500"
+						value="1" />
+				</div>
+				<div class="read-container">
+					<label for="read">Read:</label>
+					<input
+						type="checkbox"
+						name="read"
+						id="read" />
+				</div>
 			</form>
-			<button id="submit">Add</button>
-			<button
-				autofocus
-				id="btn-close">
-				Close
-			</button>
+			<div class="dialog-buttons">
+				<button id="submit">Add</button>
+				<button
+					autofocus
+					id="btn-close">
+					Close
+				</button>
+			</div>
 		</dialog>
 	</body>
 </html>

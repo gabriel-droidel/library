@@ -32,11 +32,16 @@ const closeDialog = document.querySelector('#btn-close');
 
 // DOM Dialog Buttons //
 
-addBook.addEventListener('click', () => dialog.showModal()); // pops up modal form to add a book
+addBook.addEventListener('click', () => {
+	// pops up modal form to add a book
+	dialog.showModal();
+	dialog.classList.add('open');
+});
 buttonSubmit.addEventListener('click', (e) => submitBook(e));
 closeDialog.addEventListener('click', (e) => {
 	//close the modal
 	e.preventDefault();
+	dialog.classList.remove('open');
 	dialog.close();
 });
 
@@ -48,28 +53,33 @@ function submitBook(e) {
 	const pagesInput = document.querySelector('#pages');
 	const readInput = document.querySelector('#read');
 	const errorPages = document.querySelector('.error');
-		if(pagesInput.value>3500){
-			errorPages.textContent='What are you reading larger than 3500 pages?!';
-		} else if(pagesInput.value<0){
-			errorPages.textContent="I don't think you can read negative books in this universe.";
-		}
+	errorPages.textContent = '';
+	if (pagesInput.value > 3500) {
+		errorPages.textContent = 'What are you reading larger than 3500 pages?!';
+	} else if (pagesInput.value < 0) {
+		errorPages.textContent =
+			"I don't think you can read negative books in this universe.";
+	}
 
-		if (
-			titleInput.value && titleInput.value.length<80 &&
-			authorInput.value && authorInput.value.length<80 && 
-			pagesInput.value <= 3500 &&
-			pagesInput.value >= 1
-		) {
-			addBookToLibrary(
-				capitalizeName(titleInput.value),
-				capitalizeName(authorInput.value),
-				pagesInput.value,
-				readInput.checked
-			);
-			displayBooks(myLibrary);
-			dialog.close();
-			keepAsking = false;
-		} 
+	if (
+		titleInput.value &&
+		titleInput.value.length < 80 &&
+		authorInput.value &&
+		authorInput.value.length < 80 &&
+		pagesInput.value <= 3500 &&
+		pagesInput.value >= 1
+	) {
+		addBookToLibrary(
+			capitalizeName(titleInput.value),
+			capitalizeName(authorInput.value),
+			pagesInput.value,
+			readInput.checked
+		);
+		displayBooks(myLibrary);
+		dialog.classList.remove('open');
+		dialog.close();
+		keepAsking = false;
+	}
 }
 // Functions //
 
@@ -100,8 +110,8 @@ function capitalizeWord(string) {
 	return array.join('');
 }
 
-function capitalizeName(string){
-	const array = string.split(' ').map(item=>capitalizeWord(item));
+function capitalizeName(string) {
+	const array = string.split(' ').map((item) => capitalizeWord(item));
 	return array.join(' ');
 }
 
@@ -125,9 +135,9 @@ function displayBookContent(container, item) {
 function handleReadStatus(container, item) {
 	const readStatus = document.createElement('input');
 	const labelRead = document.createElement('label');
-	labelRead.htmlFor=`${item.index}`;
+	labelRead.htmlFor = `${item.index}`;
 	labelRead.appendChild(document.createTextNode(`Read : `));
-	readStatus.name='read'
+	readStatus.name = 'read';
 	readStatus.type = 'checkbox';
 	readStatus.id = `${item.index}`;
 	readStatus.addEventListener('click', () => item.toggleRead());
