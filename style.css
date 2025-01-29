@@ -37,7 +37,7 @@ img {
 body {
 	min-height: 100vh;
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
 }
 header {
 	height: 100px;
@@ -47,4 +47,24 @@ header {
 }
 .content {
 	flex: 1;
+}
+.book-shelf {
+	padding: 1rem;
+}
+
+.book-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+	grid-template-rows: auto;
+	gap:20px;
+}
+.book-style{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap:5px;
+	background-color: bisque;
+	border:1px solid red;
+	padding:20px;
 }
