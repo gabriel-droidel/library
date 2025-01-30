@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/*Reset*/
 html {
 	box-sizing: border-box;
 	font-size: 16px;
+	font-family: 'Roboto', sans-serif;
 }
 
 *,
@@ -57,7 +60,6 @@ header {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-areas: '. title button';
 	align-items: center;
-	font-family: 'Times New Roman', Times, serif;
 	box-shadow: black 0 1px 4px;
 }
 
@@ -92,7 +94,6 @@ dialog.open {
 	min-width:20%;
 }
 dialog {
-	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-size: 16px;
 	font-weight: 400;
 }
@@ -178,26 +179,43 @@ dialog.open #btn-close:hover {
 	gap: 20px;
 }
 .book-style {
-	display: grid;
-	gap:10px;
+	display: flex;
+	flex-direction: column;
+	gap:20px;
 	background-color: var(--main-color);
 	color:white;
 	border-radius: 10px;
-	padding: 20px;
+	padding: 25px;
 	box-shadow: black 0 1px 4px;
-}
+	position: relative;
 
-.book-style >*{
+}
+.book-style p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+.book-style :nth-child(3){
 	display: flex;
-	gap:10px;
-	
+	gap:5px;
 }
-
+.book-style :nth-child(4){
+	position: absolute;
+	top:0;
+	right:0;
+	margin:0.5rem;
+	display: flex;
+	align-items: center;
+}
+  
 .book-style button{
 	padding:4px 8px;
 	text-align: end;
 	max-width: 60px;
-	justify-self: end;
+	position: absolute;
+	bottom:0;
+	right:0;
+	margin:1rem;
 	background-color: white;
 	color:var(--main-color-darker);
 	font-weight: bold;
@@ -209,4 +227,13 @@ dialog.open #btn-close:hover {
 	cursor: pointer;
 	background-color: red;
 	color:white;
+}
+.book-style .category{
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.book-style .book-data{
+	font-size: 95%;
+	color:var(--secondary-color)
 }
