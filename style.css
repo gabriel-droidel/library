@@ -197,6 +197,7 @@ dialog.open #btn-close:hover {
 }
 .book-style :nth-child(3){
 	display: flex;
+	align-items: center;
 	gap:5px;
 }
 .book-style :nth-child(4){
@@ -234,6 +235,6 @@ dialog.open #btn-close:hover {
 }
 
 .book-style .book-data{
-	font-size: 95%;
+	font-size: 1rem;
 	color:var(--secondary-color)
 }
