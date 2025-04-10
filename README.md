@@ -2,7 +2,8 @@
 
 A simple JavaScript project for managing a virtual book library. 
 This project allows users to add books, track whether they’ve been read, and remove books from the library — all within a clean, interactive user interface.
-Resource [The Odin Project] (https://www.theodinproject.com/lessons/node-path-javascript-library)
+Resource 
+[The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-library)
 
 🌐 [Live Demo](https://gabriel-droidel.github.io/library/)
 
